@@ -20,7 +20,7 @@ const WaitlistPerks = () => {
     {
       icon: Bot,
       title: "Priority AI Access",
-      description: "Get priority access to new autonomous AI agents, templates, and multi-chain features.",
+      description: "Get priority access to new AI smart contract generator features, DeFi templates, and multi-chain deployment tools.",
       color: "blue",
       iconColor: "text-blue-400",
       iconBg: "bg-blue-500/10",
@@ -132,13 +132,13 @@ const WaitlistPerks = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-      {/* Header */}
+      {/* Header - SEO: waitlist perks for AI DeFi platform */}
       <div className="mb-16 text-center">
         <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4 drop-shadow-lg tracking-tight">
           Waitlist <span className="text-purple-400">Perks</span>
         </h2>
         <p className="text-slate-400 max-w-xl mx-auto">
-          Unlock exclusive benefits designed for early adopters and power users.
+          Unlock exclusive benefits for early adopters of our AI Solidity and DeFi development platform. Priority access to new features and multi-chain tools.
         </p>
       </div>
 
