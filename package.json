@@ -23,15 +23,18 @@
     "@vercel/speed-insights": "^1.2.0",
     "lucide-react": "^0.563.0",
     "next": "^16.2.1",
+    "postprocessing": "^6.39.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "resend": "^6.8.0"
+    "resend": "^6.8.0",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.183.1",
     "eslint": "^9",
     "eslint-config-next": "^16.2.1",
     "tailwindcss": "^4",
