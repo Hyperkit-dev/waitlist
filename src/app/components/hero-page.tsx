@@ -204,7 +204,7 @@ export default function Web3Hero() {
         
         <p className="text-lg md:text-xl text-slate-400/90 mb-12 max-w-2xl leading-relaxed font-light">
           Generate, audit, test, and deploy smart contracts fast with Hyperkit Studio. Start on{' '}
-          <ChainTooltip chain="hyperion">Hyperion</ChainTooltip> testnet and extend to{' '}
+          <ChainTooltip chain="skalebase">Skale Base</ChainTooltip> and extend to{' '}
           <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
           <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
           <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>, and more.
