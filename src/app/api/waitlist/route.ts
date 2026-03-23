@@ -19,7 +19,7 @@ function getAppUrl(): string {
   }
   // Fallback based on environment
   return process.env.NODE_ENV === 'production' || process.env.VERCEL === '1'
-    ? 'https://waitlist.hyperionkit.xyz'
+    ? 'https://waitlist.hyperkitlabs.com'
     : 'http://localhost:3000';
 }
 
@@ -33,33 +33,33 @@ function generateConfirmationEmail(
   const shortWallet = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
   
   // GitHub raw URLs for assets (better email client compatibility)
-  const githubRawBase = 'https://raw.githubusercontent.com/HyperionKit/waitlist/main/public';
+  const assetBase = 'https://waitlist.hyperkitlabs.com';
   
-  // Logo URL - Using GitHub raw URL (PNG version for better email compatibility)
-  const logoUrl = `${githubRawBase}/logo/brand/hyperkit/Hyperkit-logo.png`;
+  // Logo URL - Served from app for reliable email delivery
+  const logoUrl = `${assetBase}/logo/brand/hyperkit/Hyperkit-logo.png`;
   
   // Icon URLs for registration details
   const iconUrls = {
-    email: `${githubRawBase}/icon/email-icon.png`,
-    wallet: `${githubRawBase}/icon/wallet-icon.png`,
+    email: `${assetBase}/icon/email-icon.png`,
+    wallet: `${assetBase}/icon/wallet-icon.png`,
   };
   
   // Social media icon URLs (hosted PNG with transparent background)
   const socialIcons = {
-    x: `${githubRawBase}/social/x-icon.png`,
-    discord: `${githubRawBase}/social/discord-icon.png`,
-    telegram: `${githubRawBase}/social/telegram-icon.png`,
+    x: `${assetBase}/social/x-icon.png`,
+    discord: `${assetBase}/social/discord-icon.png`,
+    telegram: `${assetBase}/social/telegram-icon.png`,
   };
   
   // Social media links
   const socialLinks = {
-    x: 'https://x.com/HyperionKit',
-    discord: 'https://discord.com/invite/MDh7jY8vWe',
-    telegram: 'https://t.me/hyperionkit',
+    x: 'https://x.com/SKALEnetwork',
+    discord: 'https://discord.gg/skale',
+    telegram: 'https://t.me/skaleofficial',
   };
   
   // Website URL
-  const websiteUrl = 'https://hyperionkit.xyz';
+  const websiteUrl = 'https://hyperkitlabs.com';
   
   // Add tracking parameters to confirmation link
   const trackedConfirmationUrl = `${confirmationUrl}&utm_source=email&utm_medium=confirmation&utm_campaign=waitlist&entry_id=${entryId}`;
@@ -464,9 +464,9 @@ export async function POST(request: NextRequest) {
         const confirmationUrl = `${appUrl}/api/confirm?token=${entry.confirmation_token}&id=${entry.id}`;
         
         // Resend configuration
-        // IMPORTANT: Use the verified subdomain (waitlist.hyperionkit.xyz) not the root domain
-        // Based on your DNS records, waitlist.hyperionkit.xyz is verified
-        const fromEmail = process.env.RESEND_FROM_EMAIL || 'team@waitlist.hyperionkit.xyz';
+        // IMPORTANT: Use the verified subdomain (waitlist.hyperkitlabs.com) not the root domain
+        // Based on your DNS records, waitlist.hyperkitlabs.com is verified
+        const fromEmail = process.env.RESEND_FROM_EMAIL || 'team@waitlist.hyperkitlabs.com';
         const testEmail = process.env.RESEND_TEST_EMAIL || 'hyperkitdev@gmail.com';
         const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
         
