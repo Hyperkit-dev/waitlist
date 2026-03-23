@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Hyperkit Studio",
   },
   description:
-    "Join the Hyperkit waitlist. Build secure multi-chain DeFi apps with AI. Generate Solidity smart contracts, audit, test, and deploy to Skale Base, Metis, Mantle & Avalanche in under 30 minutes.",
+    "Join the Hyperkit waitlist. Build secure multi-chain DeFi apps with AI. Generate Solidity smart contracts, audit, test, and deploy to Skale Base, Metis, Mantle, Avalanche & Filecoin in under 30 minutes.",
   keywords: [
     "Solidity AI",
     "AI smart contract generator",
@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "Metis DeFi",
     "Mantle DeFi",
     "Avalanche DeFi",
+    "Filecoin",
     "Ethereum DeFi tools",
     "AI contract auditor",
     "secure DeFi apps",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Hyperkit Studio",
     title: "Hyperkit Studio | AI-Powered Solidity & DeFi Development Platform",
     description:
-      "Build secure multi-chain DeFi apps with AI. Generate Solidity smart contracts, audit, test, and deploy to Skale Base, Metis, Mantle & Avalanche.",
+      "Build secure multi-chain DeFi apps with AI. Generate Solidity smart contracts, audit, test, and deploy to Skale Base, Metis, Mantle, Avalanche & Filecoin.",
     images: [
       {
         url: "/logo/brand/hyperkit/Hyperkit-logo.png",
@@ -91,7 +92,7 @@ const jsonLd = {
   "@type": "WebApplication",
   name: "Hyperkit Studio",
   description:
-    "AI-powered Solidity and DeFi development platform. Generate smart contracts with AI, audit, test, and deploy to Skale Base, Metis, Mantle & Avalanche.",
+    "AI-powered Solidity and DeFi development platform. Generate smart contracts with AI, audit, test, and deploy to Skale Base, Metis, Mantle, Avalanche & Filecoin.",
   url: siteUrl,
   applicationCategory: "DeveloperApplication",
   offers: {
@@ -103,7 +104,7 @@ const jsonLd = {
     "AI Solidity generator",
     "Smart contract builder",
     "Multi-chain DeFi deployment",
-    "Skale Base, Metis, Mantle, Avalanche support",
+    "Skale Base, Metis, Mantle, Avalanche, Filecoin support",
     "AI contract auditor",
     "DeFi app development",
   ],
