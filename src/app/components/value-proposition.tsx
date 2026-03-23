@@ -13,7 +13,7 @@ export default function ValueProposition() {
       icon: Sparkles,
         content: (
         <div className="space-y-3 text-sm text-slate-300">
-          <p>Hyperkit Studio is a modular DeFi infrastructure suite that uses AI to automate Web3 development. Our Solidity AI engine generates production-ready smart contracts from plain English—describe what you need, and get deployable code in minutes.</p>
+          <p>Hyperkit Studio is a modular DeFi infrastructure suite that uses AI to automate Web3 development. Our Solidity AI engine generates production-ready smart contracts from plain English. Describe what you need, and get deployable code in minutes.</p>
           <div className="bg-slate-900/50 rounded-lg p-4 mt-4">
             <p className="font-semibold text-white mb-2">5 Core Modules:</p>
             <ul className="space-y-2 text-slate-400">
@@ -44,11 +44,11 @@ export default function ValueProposition() {
     },
     {
       id: 'why-chains',
-      title: 'Why Skale Base, Metis, Mantle, and Avalanche?',
+      title: 'Why Skale Base, Metis, Mantle, Avalanche, and Filecoin?',
       icon: Network,
       content: (
         <div className="space-y-3 text-sm text-slate-300">
-          <p>Hyperkit is network-agnostic—it abstracts away blockchain differences so you can deploy anywhere without rewriting code.</p>
+          <p>Hyperkit is network-agnostic. It abstracts away blockchain differences so you can deploy anywhere without rewriting code.</p>
           <div className="space-y-3 mt-4">
             <div className="bg-slate-900/50 rounded-lg p-3">
               <p className="font-semibold text-white mb-1">Skale Base & Metis</p>
@@ -60,7 +60,11 @@ export default function ValueProposition() {
             </div>
             <div className="bg-slate-900/50 rounded-lg p-3">
               <p className="font-semibold text-white mb-1">Mantle</p>
-              <p className="text-slate-400 text-xs">Strategic integration partner—deploy to Mantle without network-specific rewrites (support in progress).</p>
+              <p className="text-slate-400 text-xs">Strategic integration partner. Deploy to Mantle without network-specific rewrites (support in progress).</p>
+            </div>
+            <div className="bg-slate-900/50 rounded-lg p-3">
+              <p className="font-semibold text-white mb-1">Filecoin</p>
+              <p className="text-slate-400 text-xs">Decentralized storage network for data-intensive DeFi apps and smart contract state.</p>
             </div>
           </div>
         </div>
@@ -101,17 +105,17 @@ export default function ValueProposition() {
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-16 px-6">
-      <div className="mb-8 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">
-          What is Hyperkit Studio? AI Solidity & DeFi Development Platform
+    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6">
+      <div className="mb-8 sm:mb-10 text-center">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-2 tracking-tight">
+          What is Hyperkit Studio?
         </h2>
-        <p className="text-slate-400 text-sm">
-          Learn how our AI smart contract generator and multi-chain DeFi builder helps you ship Web3 apps faster
+        <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          AI Solidity & DeFi development platform. Ship Web3 apps faster.
         </p>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {sections.map((section) => {
           const Icon = section.icon;
           const isOpen = openSection === section.id;
@@ -119,11 +123,13 @@ export default function ValueProposition() {
           return (
             <div
               key={section.id}
-              className="border border-white/10 rounded-xl bg-[#0e0e11] overflow-hidden transition-all hover:border-white/20"
+              className="border border-white/10 rounded-xl bg-[#0e0e11] overflow-hidden transition-all hover:border-white/15 focus-within:border-purple-500/30"
             >
               <button
                 onClick={() => setOpenSection(isOpen ? null : section.id)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                className="w-full px-4 sm:px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 active:bg-white/[0.07] transition-colors"
+                aria-expanded={isOpen}
+                aria-controls={`accordion-${section.id}`}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
@@ -136,7 +142,7 @@ export default function ValueProposition() {
                 />
               </button>
               {isOpen && (
-                <div className="px-6 pb-6 pt-2 border-t border-white/5 animate-in slide-in-from-top-2">
+                <div id={`accordion-${section.id}`} className="px-4 sm:px-6 pb-6 pt-2 border-t border-white/5 animate-in slide-in-from-top-2" role="region">
                   {section.content}
                 </div>
               )}
