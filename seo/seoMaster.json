@@ -1,0 +1,141 @@
+{
+  "project": "Hyperkit Studio Waitlist",
+  "description": "Comprehensive SEO keyword collection for AI-powered Solidity & DeFi development platform",
+  "lastUpdated": "2025-03-23",
+  "reference": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+  "categories": {
+    "primary": {
+      "label": "Primary target keywords (high intent, core product)",
+      "keywords": [
+        "Solidity AI",
+        "AI smart contract generator",
+        "Hyperkit Studio",
+        "DeFi development studio",
+        "AI Solidity generator",
+        "smart contract builder",
+        "generate smart contracts with AI",
+        "AI-powered DeFi development",
+        "Web3 AI development"
+      ]
+    },
+    "secondary": {
+      "label": "Secondary keywords (feature & benefit focused)",
+      "keywords": [
+        "multi-chain DeFi",
+        "secure DeFi apps",
+        "AI contract auditor",
+        "DeFi app builder",
+        "blockchain development platform",
+        "smart contract deployment",
+        "Web3 development platform",
+        "Ethereum DeFi tools",
+        "AI blockchain development",
+        "automated smart contract generation",
+        "production-ready DeFi contracts",
+        "DeFi infrastructure suite"
+      ]
+    },
+    "chainSpecific": {
+      "label": "Chain/Layer 2 specific keywords",
+      "keywords": [
+        "Skale Base",
+        "Skale Base DeFi",
+        "Metis DeFi",
+        "Metis network development",
+        "Mantle DeFi",
+        "Mantle network",
+        "Avalanche DeFi",
+        "Avalanche development",
+        "Base network DeFi",
+        "EVM compatible chains",
+        "Layer 2 DeFi",
+        "multi-chain deployment",
+        "cross-chain DeFi",
+        "zero gas fees Skale",
+        "Avalanche x402"
+      ]
+    },
+    "longTail": {
+      "label": "Long-tail search phrases (conversational, lower competition)",
+      "keywords": [
+        "how to generate Solidity contracts with AI",
+        "AI tool to build DeFi apps",
+        "best AI smart contract generator",
+        "generate Solidity from natural language",
+        "DeFi development platform for beginners",
+        "multi-chain DeFi deployment tools",
+        "AI powered smart contract auditor",
+        "build DeFi app in 30 minutes",
+        "Web3 development without coding",
+        "automate smart contract development",
+        "DeFi app from idea to deploy",
+        "smart contract generation from English"
+      ]
+    },
+    "technical": {
+      "label": "Technical/developer keywords",
+      "keywords": [
+        "Solidity",
+        "EVM",
+        "smart contract",
+        "DeFi protocols",
+        "staking contracts",
+        "liquidity pool contracts",
+        "swap contracts",
+        "NestJS Web3",
+        "React DeFi",
+        "Next.js blockchain",
+        "MetaMask integration",
+        "EVM wallet",
+        "contract auditing",
+        "gas optimization",
+        "EVM compatible"
+      ]
+    },
+    "brandAndProduct": {
+      "label": "Brand & product names",
+      "keywords": [
+        "Hyperkit",
+        "Hyperkit Studio",
+        "Hyperkit Toolkit",
+        "Hyperkit waitlist",
+        "Hyperkit Beta",
+        "Hyperkit Labs"
+      ]
+    },
+    "intentBased": {
+      "label": "User intent categories",
+      "discovery": [
+        "what is Solidity AI",
+        "best DeFi development tools",
+        "AI blockchain tools 2025"
+      ],
+      "comparison": [
+        "Solidity AI vs manual coding",
+        "AI smart contract generator comparison",
+        "Hyperkit vs traditional DeFi development"
+      ],
+      "transactional": [
+        "join Hyperkit waitlist",
+        "Hyperkit Studio sign up",
+        "Hyperkit Beta access"
+      ]
+    }
+  },
+  "placementGuidelines": {
+    "title": ["Primary + brand", "Max 60 chars", "Include Solidity AI or AI smart contract generator"],
+    "metaDescription": ["Primary + benefit + CTA", "Max 155 chars", "Include 1–2 primary keywords naturally"],
+    "h1": ["Main headline", "One per page", "Include primary keyword"],
+    "h2_h3": ["Section headers", "Include secondary/long-tail naturally"],
+    "body": ["Natural language", "Avoid keyword stuffing", "Answer user questions", "Use semantic variations"],
+    "url": ["Short, descriptive", "Include keywords where logical", "e.g. /waitlist not /p/123"],
+    "images": ["Descriptive alt text", "Include relevant keywords", "e.g. 'Hyperkit Studio AI DeFi platform logo'"]
+  },
+  "avoid": [
+    "Keyword stuffing",
+    "Excessive repetition",
+    "Hidden text",
+    "Duplicate content",
+    "Meta keywords tag (Google ignores it)"
+  ]
+}
