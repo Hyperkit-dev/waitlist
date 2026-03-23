@@ -1,8 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050507;
+  --foreground: #f8fafc;
+  /* Design tokens - dark Web3/DeFi */
+  --surface: #0e0e11;
+  --surface-elevated: #16161a;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --accent: #a78bfa;
+  --accent-muted: rgba(167, 139, 250, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  /* Spacing scale (8px base) */
+  --section-padding-y: clamp(4rem, 10vw, 6rem);
+  --section-padding-x: clamp(1rem, 4vw, 1.5rem);
+  --content-max: 72rem;
 }
 
 @theme inline {
@@ -12,17 +26,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 /* Float animation */
@@ -37,6 +53,14 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* GridScan background component */
+.gridscan {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 @font-face {
