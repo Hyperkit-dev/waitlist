@@ -11,7 +11,7 @@ const steps = [
     title: 'Connect wallet & email',
     description: (
       <>
-        Click "Join waitlist" and connect a supported wallet to register. Hyperkit supports early access on the{' '}
+        Click "Join waitlist" and connect your EVM wallet to register. Hyperkit Studio supports early access on the{' '}
         <ChainTooltip chain="skalebase">Skale Base</ChainTooltip> with planned support for{' '}
         <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
         <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
@@ -54,7 +54,7 @@ export default function HowItWorks() {
     <div id="how-it-works" className="w-full max-w-5xl mb-32 relative scroll-mt-24">
       <div className="mb-12 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-          How to secure your spot
+          How to secure your spot on the Hyperkit Studio waitlist
         </h2>
       </div>
       
