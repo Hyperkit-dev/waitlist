@@ -55,7 +55,7 @@ function ConfirmedContent() {
               <div className="relative w-16 h-16 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 flex items-center justify-center shadow-2xl ring-1 ring-white/5 p-3">
                 <Image
                   src="/logo/brand/hyperkit/Hyperkit-logo.png"
-                  alt="Hyperkit Logo"
+                  alt="Hyperkit Studio - AI Solidity & DeFi Development"
                   width={40}
                   height={40}
                   priority
