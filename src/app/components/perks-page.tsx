@@ -115,8 +115,9 @@ const WaitlistPerks = () => {
         <>
           First to deploy on <ChainTooltip chain="skalebase">Skale Base</ChainTooltip>,{' '}
           <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
-          <ChainTooltip chain="mantle">Mantle</ChainTooltip> and{' '}
-          <ChainTooltip chain="avalanche">Avalanche</ChainTooltip> using our advanced testnet tools.
+          <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
+          <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>, and{' '}
+          <ChainTooltip chain="filecoin">Filecoin</ChainTooltip> using our advanced testnet tools.
         </>
       ),
       color: "indigo",
@@ -131,25 +132,25 @@ const WaitlistPerks = () => {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
       {/* Header - SEO: waitlist perks for AI DeFi platform */}
-      <div className="mb-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4 drop-shadow-lg tracking-tight">
+      <div className="mb-10 sm:mb-14 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-3 sm:mb-4 tracking-tight">
           Waitlist <span className="text-purple-400">Perks</span>
         </h2>
-        <p className="text-slate-400 max-w-xl mx-auto">
-          Unlock exclusive benefits for early adopters of our AI Solidity and DeFi development platform. Priority access to new features and multi-chain tools.
+        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+          Unlock exclusive benefits for early adopters. Priority access to AI features and multi-chain tools.
         </p>
       </div>
 
       {/* Perks Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 text-left">
         {perks.map((perk, index) => {
           const IconComponent = perk.icon;
           return (
             <div
               key={index}
-              className={`group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/5 bg-[#0e0e11] p-8 transition-all duration-500 hover:-translate-y-1 ${perk.hoverBorder} ${perk.hoverShadow}`}
+              className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border border-white/5 bg-[#0e0e11] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1 active:translate-y-0 ${perk.hoverBorder} ${perk.hoverShadow}`}
             >
               {/* Bottom Gradient Glow */}
               <div className={`pointer-events-none absolute inset-0 bg-gradient-to-b ${perk.gradientOverlay} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}></div>
@@ -158,10 +159,10 @@ const WaitlistPerks = () => {
               <div className={`pointer-events-none absolute -bottom-16 left-1/2 h-40 w-full -translate-x-1/2 blur-[50px] transition-all duration-500 ${perk.bottomGlow}`}></div>
               
               <div className="relative z-10">
-                <div className={`mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl ${perk.iconBg} ${perk.iconColor} ring-1 ring-inset ${perk.ring} transition-colors group-hover:${perk.iconBg.replace('/10', '/20')} shadow-[0_0_20px_-5px_rgba(168,85,247,0.4)]`}>
-                  <IconComponent className="h-6 w-6" />
+                <div className={`mb-5 sm:mb-6 inline-flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl ${perk.iconBg} ${perk.iconColor} ring-1 ring-inset ${perk.ring} transition-colors shadow-[0_0_20px_-5px_rgba(168,85,247,0.3)]`}>
+                  <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="text-xl font-medium text-white mb-3 tracking-tight">
+                <h3 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 tracking-tight">
                   {perk.title}
                 </h3>
                 <div className="text-sm leading-relaxed text-slate-400">
