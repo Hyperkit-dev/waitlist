@@ -12,7 +12,7 @@ const steps = [
     description: (
       <>
         Click "Join waitlist" and connect a supported wallet to register. Hyperkit supports early access on the{' '}
-        <ChainTooltip chain="hyperion">Hyperion</ChainTooltip> testnet with planned support for{' '}
+        <ChainTooltip chain="skalebase">Skale Base</ChainTooltip> with planned support for{' '}
         <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
         <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
         <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>, and{' '}
