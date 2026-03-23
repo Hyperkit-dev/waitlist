@@ -8,11 +8,11 @@ interface ChainTooltipProps {
 }
 
 const chainInfo = {
-  skalebase: 'SKALE on Base: Zero gas fees, encrypted transactions, and instant finality. Deploy Hyperkit apps with native Base integration.',
-  metis: 'Strategic partner network. Hyperkit includes native Metis SDK integration for cross-chain operations.',
-  avalanche: 'Avalanche x402 integration enables pay-per-deploy and pay-per-API monetization flows on Fuji testnet.',
-  mantle: 'Strategic integration partner. Deploy to Mantle without network-specific rewrites (support in progress).',
-  base: 'Base network support coming soon. Deploy your Hyperkit apps to Base with the same unified workflow.',
+  skalebase: 'SKALE on Base: Zero gas fees, encrypted transactions, instant finality. Deploy AI-generated Solidity and DeFi apps with native Base integration.',
+  metis: 'Metis DeFi network. Hyperkit includes native Metis SDK integration for cross-chain operations and multi-chain DeFi deployment.',
+  avalanche: 'Avalanche DeFi: x402 integration enables pay-per-deploy and pay-per-API monetization flows on Fuji testnet.',
+  mantle: 'Mantle DeFi network. Deploy your AI-generated smart contracts to Mantle without network-specific rewrites (support in progress).',
+  base: 'Base network support coming soon. Deploy your Hyperkit AI DeFi apps to Base with the same unified workflow.',
 };
 
 export default function ChainTooltip({ chain, children }: ChainTooltipProps) {
