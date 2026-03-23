@@ -9,8 +9,8 @@ const Footer = () => {
             © 2025 Hyperkit Toolkit. AI-powered Solidity & DeFi development.
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <a href="#" className="text-slate-500 hover:text-purple-400 transition-colors">Privacy</a>
-            <a href="#" className="text-slate-500 hover:text-purple-400 transition-colors">Terms</a>
+            <a href="https://hyperkitlabs.com/legal" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-purple-400 transition-colors">Privacy</a>
+            <a href="https://hyperkitlabs.com/legal" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-purple-400 transition-colors">Terms</a>
           </div>
         </div>
       </div>
