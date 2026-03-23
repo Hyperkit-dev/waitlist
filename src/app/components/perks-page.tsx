@@ -113,7 +113,7 @@ const WaitlistPerks = () => {
       title: "Integrations",
       description: (
         <>
-          First to deploy on <ChainTooltip chain="hyperion">Hyperion</ChainTooltip>,{' '}
+          First to deploy on <ChainTooltip chain="skalebase">Skale Base</ChainTooltip>,{' '}
           <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
           <ChainTooltip chain="mantle">Mantle</ChainTooltip> and{' '}
           <ChainTooltip chain="avalanche">Avalanche</ChainTooltip> using our advanced testnet tools.
