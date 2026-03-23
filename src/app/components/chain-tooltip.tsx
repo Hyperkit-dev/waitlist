@@ -3,12 +3,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 interface ChainTooltipProps {
-  chain: 'hyperion' | 'metis' | 'avalanche' | 'mantle' | 'base';
+  chain: 'skalebase' | 'metis' | 'avalanche' | 'mantle' | 'base';
   children: React.ReactNode;
 }
 
 const chainInfo = {
-  hyperion: 'Native interoperability with Metis SDK for seamless bridging between Hyperion and Metis Andromeda.',
+  skalebase: 'SKALE on Base: Zero gas fees, encrypted transactions, and instant finality. Deploy Hyperkit apps with native Base integration.',
   metis: 'Strategic partner network. Hyperkit includes native Metis SDK integration for cross-chain operations.',
   avalanche: 'Avalanche x402 integration enables pay-per-deploy and pay-per-API monetization flows on Fuji testnet.',
   mantle: 'Strategic integration partner. Deploy to Mantle without network-specific rewrites (support in progress).',
