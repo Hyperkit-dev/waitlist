@@ -45,8 +45,8 @@ export default function WaitlistStats() {
 
   if (loading) {
     return (
-      <div className="w-full max-w-4xl mx-auto mb-12 px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="w-full max-w-md mx-auto mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
@@ -100,14 +100,14 @@ export default function WaitlistStats() {
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-12 px-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="w-full max-w-md mx-auto mt-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
         {statsItems.map((item, index) => {
           const Icon = item.icon;
           return (
             <div
               key={index}
-              className={`bg-[#0e0e11] border ${item.borderColor} rounded-xl p-6 transition-all hover:border-opacity-50 hover:scale-105`}
+              className={`bg-[#0e0e11] border ${item.borderColor} rounded-xl p-4 sm:p-5 transition-all hover:border-opacity-50 hover:scale-[1.02]`}
             >
               <div className="flex items-center justify-between mb-3">
                 <div className={`w-10 h-10 rounded-lg ${item.bgColor} flex items-center justify-center`}>
