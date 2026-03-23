@@ -15,7 +15,8 @@ const steps = [
         <ChainTooltip chain="skalebase">Skale Base</ChainTooltip> with planned support for{' '}
         <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
         <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
-        <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>, and{' '}
+        <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>,{' '}
+        <ChainTooltip chain="filecoin">Filecoin</ChainTooltip>, and{' '}
         <ChainTooltip chain="base">Base</ChainTooltip> networks.
       </>
     ),
@@ -51,17 +52,20 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <div id="how-it-works" className="w-full max-w-5xl mb-32 relative scroll-mt-24">
-      <div className="mb-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-          How to secure your spot on the Hyperkit Studio waitlist
+    <div className="w-full max-w-5xl mx-auto relative px-0 sm:px-4">
+      <div className="mb-10 sm:mb-12 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl font-semibold text-white tracking-tight mb-2">
+          How to secure your spot
         </h2>
+        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+          Three simple steps to join the Hyperkit Studio waitlist
+        </p>
       </div>
       
       {/* Connecting Line (Desktop) */}
       <div className="hidden md:block absolute top-[28px] left-[16%] right-[16%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0" />
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-8 lg:gap-10 relative z-10">
         {steps.map((step, index) => {
           const Icon = step.icon;
           return (
@@ -72,8 +76,8 @@ export default function HowItWorks() {
                   {step.number}
                 </div>
               </div>
-              <h3 className="text-lg font-medium text-white mb-2">{step.title}</h3>
-              <div className="text-sm text-slate-400 max-w-[280px] leading-relaxed">
+              <h3 className="text-base sm:text-lg font-medium text-white mb-2">{step.title}</h3>
+              <div className="text-sm text-slate-400 max-w-[280px] mx-auto md:mx-0 leading-relaxed">
                 {step.description}
               </div>
             </div>
