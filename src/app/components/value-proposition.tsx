@@ -11,15 +11,15 @@ export default function ValueProposition() {
       id: 'what-is-hyperkit',
       title: 'What is Hyperkit Studio?',
       icon: Sparkles,
-      content: (
+        content: (
         <div className="space-y-3 text-sm text-slate-300">
-          <p>Hyperkit Studio is a modular DeFi infrastructure suite that uses AI to automate Web3 development. Think of it as a 3D printer with pre-loaded blueprints—you describe what you want in plain English, and it generates production-ready code.</p>
+          <p>Hyperkit Studio is a modular DeFi infrastructure suite that uses AI to automate Web3 development. Our Solidity AI engine generates production-ready smart contracts from plain English—describe what you need, and get deployable code in minutes.</p>
           <div className="bg-slate-900/50 rounded-lg p-4 mt-4">
             <p className="font-semibold text-white mb-2">5 Core Modules:</p>
             <ul className="space-y-2 text-slate-400">
               <li className="flex items-start gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span><strong className="text-white">AI Project Generator:</strong> Generate complete Web3 apps from natural language prompts</span>
+                <span><strong className="text-white">AI Project Generator:</strong> Generate Solidity contracts and complete Web3 apps from natural language prompts</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-purple-400 mt-1">•</span>
@@ -35,7 +35,7 @@ export default function ValueProposition() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span><strong className="text-white">Integrated Security:</strong> AI-driven auditing built into the workflow</span>
+                <span><strong className="text-white">Integrated Security:</strong> AI contract auditor built into the workflow for secure DeFi apps</span>
               </li>
             </ul>
           </div>
@@ -70,10 +70,10 @@ export default function ValueProposition() {
       id: 'value-prop',
       title: 'Why Build with Hyperkit?',
       icon: Zap,
-      content: (
+        content: (
         <div className="space-y-3 text-sm text-slate-300">
           <p><strong className="text-white">For DeFi and Web3 developers who want to ship faster and safer.</strong></p>
-          <p>Hyperkit removes friction by combining AI-powered contract generation, auditing, multi-chain deployment, and monitoring in a single workspace.</p>
+          <p>Hyperkit removes friction by combining our Solidity AI generator, smart contract auditing, multi-chain DeFi deployment, and monitoring in a single workspace.</p>
           <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-lg p-4 mt-4 border border-purple-500/20">
             <p className="font-semibold text-white mb-2">Key Benefits:</p>
             <ul className="space-y-2 text-slate-400">
@@ -104,10 +104,10 @@ export default function ValueProposition() {
     <div className="w-full max-w-4xl mx-auto mb-16 px-6">
       <div className="mb-8 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">
-          What is Hyperkit Studio?
+          What is Hyperkit Studio? AI Solidity & DeFi Development Platform
         </h2>
         <p className="text-slate-400 text-sm">
-          Click to learn more about our platform and how it works
+          Learn how our AI smart contract generator and multi-chain DeFi builder helps you ship Web3 apps faster
         </p>
       </div>
 
