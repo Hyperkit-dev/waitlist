@@ -181,7 +181,7 @@ export default function Web3Hero() {
             <div className="relative w-20 h-20 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 flex items-center justify-center shadow-2xl ring-1 ring-white/5 p-4">
                 <Image
                   src="/logo/brand/hyperkit/Hyperkit-logo.png"
-                  alt="Hyperkit Logo"
+                  alt="Hyperkit Studio - AI Solidity and DeFi Development Platform"
                   width={56}
                   height={56}
                   priority
@@ -191,7 +191,7 @@ export default function Web3Hero() {
           </div>
         </div>
 
-        {/* Hero Text */}
+        {/* Hero Text - SEO: Solidity AI, AI smart contract generator, DeFi keywords */}
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-white mb-6 max-w-5xl">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">
             AI Studio to Build and Ship
@@ -203,8 +203,8 @@ export default function Web3Hero() {
         </h1>
         
         <p className="text-lg md:text-xl text-slate-400/90 mb-12 max-w-2xl leading-relaxed font-light">
-          Generate, audit, test, and deploy smart contracts fast with Hyperkit Studio. Start on{' '}
-          <ChainTooltip chain="skalebase">Skale Base</ChainTooltip> and extend to{' '}
+          Generate Solidity smart contracts with AI, audit, test, and deploy secure DeFi apps fast. Hyperkit Studio is your AI-powered smart contract builder for{' '}
+          <ChainTooltip chain="skalebase">Skale Base</ChainTooltip>,{' '}
           <ChainTooltip chain="metis">Metis</ChainTooltip>,{' '}
           <ChainTooltip chain="mantle">Mantle</ChainTooltip>,{' '}
           <ChainTooltip chain="avalanche">Avalanche</ChainTooltip>, and more.
