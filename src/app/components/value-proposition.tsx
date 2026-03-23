@@ -44,15 +44,15 @@ export default function ValueProposition() {
     },
     {
       id: 'why-chains',
-      title: 'Why Hyperion, Metis, Mantle, and Avalanche?',
+      title: 'Why Skale Base, Metis, Mantle, and Avalanche?',
       icon: Network,
       content: (
         <div className="space-y-3 text-sm text-slate-300">
           <p>Hyperkit is network-agnostic—it abstracts away blockchain differences so you can deploy anywhere without rewriting code.</p>
           <div className="space-y-3 mt-4">
             <div className="bg-slate-900/50 rounded-lg p-3">
-              <p className="font-semibold text-white mb-1">Hyperion & Metis</p>
-              <p className="text-slate-400 text-xs">Native interoperability layer with Metis SDK for seamless asset and data bridging between Hyperion and Metis Andromeda.</p>
+              <p className="font-semibold text-white mb-1">Skale Base & Metis</p>
+              <p className="text-slate-400 text-xs">Skale Base offers zero gas fees and instant finality. Metis SDK integration for seamless cross-chain asset and data bridging.</p>
             </div>
             <div className="bg-slate-900/50 rounded-lg p-3">
               <p className="font-semibold text-white mb-1">Avalanche</p>
