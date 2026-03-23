@@ -14,7 +14,7 @@ function getAppUrl(): string {
   }
   // Priority 2: Detect production environment
   if (process.env.NODE_ENV === 'production' || process.env.VERCEL === '1') {
-    return 'https://waitlist.hyperionkit.xyz';
+    return 'https://waitlist.hyperkitlabs.com';
   }
   // Priority 3: Default to localhost for development
   return 'http://localhost:3000';
