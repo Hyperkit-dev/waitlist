@@ -1,5 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
+import {
+  normalizeAndValidateEmail,
+  normalizeAndValidateWallet,
+  parseUuidQueryParam,
+  readJsonBodySafe,
+} from '@/lib/input-guards';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -63,8 +69,8 @@ function getRedirectBase(request: NextRequest): string {
  */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const token = searchParams.get('token');
-  const id = searchParams.get('id');
+  const token = parseUuidQueryParam(searchParams.get('token'));
+  const id = parseUuidQueryParam(searchParams.get('id'));
 
   const baseUrl = getRedirectBase(request);
 
@@ -82,19 +88,22 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (fetchError || !entryData) {
-      console.error('Unsubscribe: entry not found:', { id, error: fetchError });
+      console.error('Unsubscribe: entry not found:', {
+        idPrefix: id.slice(0, 8),
+        error: fetchError,
+      });
       return NextResponse.redirect(
         new URL('/unsubscribe?error=invalid_token', baseUrl)
       );
     }
 
-    const normalizedToken = token.toLowerCase().trim();
+    const normalizedToken = token;
     const normalizedDbToken = String(entryData.confirmation_token || '')
       .toLowerCase()
       .trim();
 
     if (normalizedToken !== normalizedDbToken) {
-      console.error('Unsubscribe: token mismatch', { id });
+      console.error('Unsubscribe: token mismatch', { idPrefix: id.slice(0, 8) });
       return NextResponse.redirect(
         new URL('/unsubscribe?error=invalid_token', baseUrl)
       );
@@ -128,31 +137,36 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const email = body?.email;
-    const walletAddress = body?.walletAddress;
+    const parsed = await readJsonBodySafe(request);
+    if (!parsed.ok) {
+      return NextResponse.json(
+        { error: parsed.error },
+        { status: parsed.status }
+      );
+    }
 
-    if (!email || !walletAddress) {
+    const emailRaw = parsed.data.email;
+    const walletRaw = parsed.data.walletAddress;
+
+    if (emailRaw === undefined || walletRaw === undefined) {
       return NextResponse.json(
         { error: 'Email and wallet address are required' },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    const emailResult = normalizeAndValidateEmail(emailRaw);
+    if (!emailResult.ok) {
+      return NextResponse.json({ error: emailResult.error }, { status: 400 });
     }
 
-    if (!/^0x[a-fA-F0-9]{40}$/.test(walletAddress)) {
-      return NextResponse.json(
-        { error: 'Invalid wallet address format' },
-        { status: 400 }
-      );
+    const walletResult = normalizeAndValidateWallet(walletRaw);
+    if (!walletResult.ok) {
+      return NextResponse.json({ error: walletResult.error }, { status: 400 });
     }
 
-    const normalizedEmail = email.toLowerCase().trim();
-    const normalizedWallet = String(walletAddress).toLowerCase();
+    const normalizedEmail = emailResult.value;
+    const normalizedWallet = walletResult.value;
 
     const { data: entryData, error: entryError } = await supabase
       .from('waitlist_entries')
