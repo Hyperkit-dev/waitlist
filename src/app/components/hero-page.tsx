@@ -219,6 +219,7 @@ export default function Web3Hero() {
                   placeholder="builder@hyperkit.xyz" 
                   className="w-full pl-3 pr-4 py-3.5 sm:py-4 bg-transparent text-base sm:text-lg text-white placeholder-slate-600 focus:outline-none" 
                   autoComplete="email"
+                  maxLength={254}
                   aria-describedby={error ? "email-error" : undefined}
                 />
               </div>
