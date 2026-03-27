@@ -106,3 +106,35 @@ CREATE POLICY "Allow public email log reads"
   TO anon, authenticated 
   USING (true);
 
+-- Newsletter subscriptions (marketing opt-in/out; linked by email to waitlist signups)
+CREATE TABLE IF NOT EXISTS newsletter (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  status VARCHAR(50) NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'unsubscribed')),
+  source VARCHAR(50) DEFAULT 'waitlist',
+  subscribed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  unsubscribed_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  CONSTRAINT newsletter_email_unique UNIQUE (email)
+);
+
+CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter(email);
+CREATE INDEX IF NOT EXISTS idx_newsletter_status ON newsletter(status);
+
+DROP TRIGGER IF EXISTS update_newsletter_updated_at ON newsletter;
+CREATE TRIGGER update_newsletter_updated_at
+  BEFORE UPDATE ON newsletter
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+ALTER TABLE newsletter ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public newsletter upsert" ON newsletter;
+CREATE POLICY "Allow public newsletter upsert"
+  ON newsletter
+  FOR ALL
+  TO anon, authenticated
+  USING (true)
+  WITH CHECK (true);
+
