@@ -31,7 +31,8 @@ function generateConfirmationEmail(
   email: string,
   walletAddress: string,
   confirmationUrl: string,
-  entryId: string
+  entryId: string,
+  unsubscribeUrl: string
 ): string {
   const shortWallet = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
   
@@ -60,9 +61,6 @@ function generateConfirmationEmail(
     discord: 'https://discord.gg/skale',
     telegram: 'https://t.me/skaleofficial',
   };
-  
-  // Website URL
-  const websiteUrl = 'https://hyperkitlabs.com';
   
   // Add tracking parameters to confirmation link
   const trackedConfirmationUrl = `${confirmationUrl}&utm_source=email&utm_medium=confirmation&utm_campaign=waitlist&entry_id=${entryId}`;
@@ -295,7 +293,7 @@ function generateConfirmationEmail(
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 16px auto 0 auto;">
                                 <tr>
                                     <td style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; font-family: Arial, Helvetica, sans-serif;">
-                                        <a href="${websiteUrl}?action=unsubscribe" style="color: #475569; text-decoration: none; margin: 0 8px;">Unsubscribe</a>
+                                        <a href="${unsubscribeUrl}" style="color: #475569; text-decoration: none; margin: 0 8px;">Unsubscribe</a>
                                         <span style="color: #1e293b; margin: 0 4px;">|</span>
                                         <a href="${PRIVACY_POLICY_URL}" style="color: #475569; text-decoration: none; margin: 0 8px;">Privacy</a>
                                     </td>
@@ -316,7 +314,8 @@ function generateConfirmationEmail(
 function generateConfirmationEmailText(
   email: string,
   walletAddress: string,
-  confirmationUrl: string
+  confirmationUrl: string,
+  unsubscribeUrl: string
 ): string {
   const shortWallet = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
   
@@ -342,6 +341,9 @@ ${confirmationUrl}
 If you didn't request this, please ignore this email.
 
 Privacy: ${PRIVACY_POLICY_URL}
+
+Unsubscribe from marketing emails:
+${unsubscribeUrl}
 
 This is an automated message from Hyperkit.
   `.trim();
@@ -468,6 +470,7 @@ export async function POST(request: NextRequest) {
         const appUrl = getAppUrl();
         
         const confirmationUrl = `${appUrl}/api/confirm?token=${entry.confirmation_token}&id=${entry.id}`;
+        const unsubscribeUrl = `${appUrl}/api/unsubscribe?token=${entry.confirmation_token}&id=${entry.id}&utm_source=email&utm_medium=unsubscribe&utm_campaign=waitlist`;
         
         // Resend configuration
         // IMPORTANT: Use the verified subdomain (waitlist.hyperkitlabs.com) not the root domain
@@ -499,9 +502,20 @@ export async function POST(request: NextRequest) {
           from: fromEmail,
           to: recipientEmail,
           subject: '🎉 Confirm your spot - Hyperkit Waitlist Confirmation',
-          html: generateConfirmationEmail(entry.email, entry.wallet_address, confirmationUrl, entry.id),
+          html: generateConfirmationEmail(
+            entry.email,
+            entry.wallet_address,
+            confirmationUrl,
+            entry.id,
+            unsubscribeUrl
+          ),
           // Text version for better deliverability
-          text: generateConfirmationEmailText(entry.email, entry.wallet_address, confirmationUrl),
+          text: generateConfirmationEmailText(
+            entry.email,
+            entry.wallet_address,
+            confirmationUrl,
+            unsubscribeUrl
+          ),
           // Priority headers for email importance
           headers: {
             'X-Priority': '1', // High priority (1 = High, 3 = Normal, 5 = Low)
