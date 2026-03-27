@@ -23,6 +23,9 @@ function getAppUrl(): string {
     : 'http://localhost:3000';
 }
 
+/** Legal / privacy policy URL used in transactional emails */
+const PRIVACY_POLICY_URL = 'https://www.hyperkitlabs.com/legal?view=privacy';
+
 // Email template functions - defined before POST handler to avoid reference errors
 function generateConfirmationEmail(
   email: string,
@@ -294,7 +297,7 @@ function generateConfirmationEmail(
                                     <td style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; font-family: Arial, Helvetica, sans-serif;">
                                         <a href="${websiteUrl}?action=unsubscribe" style="color: #475569; text-decoration: none; margin: 0 8px;">Unsubscribe</a>
                                         <span style="color: #1e293b; margin: 0 4px;">|</span>
-                                        <a href="${websiteUrl}/privacy" style="color: #475569; text-decoration: none; margin: 0 8px;">Privacy</a>
+                                        <a href="${PRIVACY_POLICY_URL}" style="color: #475569; text-decoration: none; margin: 0 8px;">Privacy</a>
                                     </td>
                                 </tr>
                             </table>
@@ -337,6 +340,9 @@ Confirm Your Email:
 ${confirmationUrl}
 
 If you didn't request this, please ignore this email.
+
+Privacy: ${PRIVACY_POLICY_URL}
+
 This is an automated message from Hyperkit.
   `.trim();
 }
