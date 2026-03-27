@@ -259,6 +259,7 @@ function UnsubscribeContent() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
                     autoComplete="email"
+                    maxLength={254}
                     required
                     className="w-full pl-3 pr-4 py-3.5 bg-transparent text-base text-white placeholder-slate-600 focus:outline-none"
                   />
@@ -284,6 +285,7 @@ function UnsubscribeContent() {
                     placeholder="0x…"
                     autoComplete="off"
                     spellCheck={false}
+                    maxLength={42}
                     required
                     className="w-full min-w-0 pl-3 pr-4 py-3.5 bg-transparent text-sm text-white placeholder-slate-600 focus:outline-none font-mono"
                   />
