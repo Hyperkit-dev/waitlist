@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Mail, Wallet, ArrowRight } from 'lucide-react';
 import ChainTooltip from './chain-tooltip';
 import WaitlistStats from './waitlist-stats';
@@ -280,9 +281,17 @@ export default function Web3Hero() {
             </div>
           </div>
           
-          <p className="flex items-center justify-center gap-2 text-xs text-slate-500">
+          <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-slate-500">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" aria-hidden></span>
-            Limited spots · Beta Wave 1 · No spam, unsubscribe anytime
+            <span>
+              Limited spots · Beta Wave 1 · No spam,{' '}
+              <Link
+                href="/unsubscribe"
+                className="text-slate-400 underline underline-offset-2 decoration-slate-600 hover:text-purple-400 hover:decoration-purple-400/60 transition-colors"
+              >
+                unsubscribe anytime
+              </Link>
+            </span>
           </p>
 
           {/* Waitlist Stats */}
