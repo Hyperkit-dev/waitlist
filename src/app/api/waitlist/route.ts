@@ -1,6 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import {
+  htmlEscape,
+  normalizeAndValidateEmail,
+  normalizeAndValidateWallet,
+  readJsonBodySafe,
+  sanitizePlainTextEmailField,
+} from '@/lib/input-guards';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -35,7 +42,9 @@ function generateConfirmationEmail(
   unsubscribeUrl: string
 ): string {
   const shortWallet = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
-  
+  const safeEmailHtml = htmlEscape(email);
+  const safeWalletHtml = htmlEscape(shortWallet);
+
   // GitHub raw URLs for assets (better email client compatibility)
   const assetBase = 'https://waitlist.hyperkitlabs.com';
   
@@ -188,7 +197,7 @@ function generateConfirmationEmail(
                                                         </tr>
                                                         <tr>
                                                             <td style="font-size: 14px; color: #e2e8f0; font-weight: 500; letter-spacing: -0.01em; font-family: 'Courier New', Courier, monospace;">
-                                                                ${email}
+                                                                ${safeEmailHtml}
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -218,7 +227,7 @@ function generateConfirmationEmail(
                                                         </tr>
                                                         <tr>
                                                             <td style="font-size: 14px; color: #e2e8f0; font-weight: 500; letter-spacing: -0.01em; font-family: 'Courier New', Courier, monospace;">
-                                                                ${shortWallet}
+                                                                ${safeWalletHtml}
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -318,7 +327,9 @@ function generateConfirmationEmailText(
   unsubscribeUrl: string
 ): string {
   const shortWallet = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
-  
+  const safeEmail = sanitizePlainTextEmailField(email, 254);
+  const safeWallet = sanitizePlainTextEmailField(shortWallet, 64);
+
   return `
 🎉 Spot Secured!
 
@@ -329,8 +340,8 @@ Thank you for joining the Hyperkit waitlist! Your spot has been secured.
 This email serves as proof that you've successfully registered for early access to Hyperkit Studio.
 
 Registration Details:
-Email: ${email}
-Wallet: ${shortWallet}
+Email: ${safeEmail}
+Wallet: ${safeWallet}
 
 What's Next?
 We'll notify you when Beta Wave 1 launches. Stay tuned for updates!
@@ -351,35 +362,36 @@ This is an automated message from Hyperkit.
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, walletAddress } = await request.json();
+    const parsed = await readJsonBodySafe(request);
+    if (!parsed.ok) {
+      return NextResponse.json(
+        { error: parsed.error },
+        { status: parsed.status }
+      );
+    }
 
-    // Validation
-    if (!email || !walletAddress) {
+    const emailRaw = parsed.data.email;
+    const walletRaw = parsed.data.walletAddress;
+
+    if (emailRaw === undefined || walletRaw === undefined) {
       return NextResponse.json(
         { error: 'Email and wallet address are required' },
         { status: 400 }
       );
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
+    const emailResult = normalizeAndValidateEmail(emailRaw);
+    if (!emailResult.ok) {
+      return NextResponse.json({ error: emailResult.error }, { status: 400 });
     }
 
-    // Wallet address validation (basic Ethereum address check)
-    if (!/^0x[a-fA-F0-9]{40}$/.test(walletAddress)) {
-      return NextResponse.json(
-        { error: 'Invalid wallet address format' },
-        { status: 400 }
-      );
+    const walletResult = normalizeAndValidateWallet(walletRaw);
+    if (!walletResult.ok) {
+      return NextResponse.json({ error: walletResult.error }, { status: 400 });
     }
 
-    const normalizedEmail = email.toLowerCase().trim();
-    const normalizedWallet = walletAddress.toLowerCase();
+    const normalizedEmail = emailResult.value;
+    const normalizedWallet = walletResult.value;
 
     // Check for duplicate email
     const { data: existingEmail } = await supabase
@@ -487,10 +499,9 @@ export async function POST(request: NextRequest) {
         console.log('[EMAIL DEBUG]', {
           isProduction,
           NODE_ENV: process.env.NODE_ENV,
-          userEmail: entry.email,
+          entryId: entry.id,
           recipientEmail,
           fromEmail,
-          confirmationUrl
         });
         
         // Log if we're using test email in development
