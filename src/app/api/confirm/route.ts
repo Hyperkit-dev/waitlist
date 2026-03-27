@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
+import { parseUuidQueryParam } from '@/lib/input-guards';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -22,8 +23,11 @@ function getAppUrl(): string {
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const token = searchParams.get('token');
-  const id = searchParams.get('id');
+  const tokenRaw = searchParams.get('token');
+  const idRaw = searchParams.get('id');
+
+  const id = parseUuidQueryParam(idRaw);
+  const token = parseUuidQueryParam(tokenRaw);
 
   if (!token || !id) {
     // Get base URL for proper redirect
@@ -42,7 +46,7 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (fetchError || !entryData) {
-      console.error('Entry not found:', { id, error: fetchError });
+      console.error('Entry not found:', { idPrefix: id.slice(0, 8), error: fetchError });
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
       return NextResponse.redirect(
         new URL('/confirmed?error=invalid_token', baseUrl)
@@ -51,7 +55,7 @@ export async function GET(request: NextRequest) {
 
     // Check if already confirmed
     if (entryData.email_confirmed) {
-      console.log('Email already confirmed:', id);
+      console.log('Email already confirmed:', id.slice(0, 8));
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
       return NextResponse.redirect(
         new URL('/confirmed?success=true&already_confirmed=true', baseUrl)
@@ -59,18 +63,12 @@ export async function GET(request: NextRequest) {
     }
 
     // Normalize tokens for comparison (UUIDs should be compared as strings, case-insensitive)
-    const normalizedToken = token.toLowerCase().trim();
+    const normalizedToken = token;
     const normalizedDbToken = String(entryData.confirmation_token || '').toLowerCase().trim();
 
     // Verify token matches
     if (normalizedToken !== normalizedDbToken) {
-      console.error('Token mismatch:', {
-        provided: token,
-        providedNormalized: normalizedToken,
-        expected: entryData.confirmation_token,
-        expectedNormalized: normalizedDbToken,
-        id
-      });
+      console.error('Token mismatch:', { idPrefix: id.slice(0, 8) });
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
       return NextResponse.redirect(
         new URL('/confirmed?error=invalid_token', baseUrl)
@@ -92,12 +90,9 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (error || !data) {
-      console.error('Confirmation update error:', { 
-        error, 
-        id, 
-        tokenFromUrl: token,
-        tokenFromDb: entryData.confirmation_token,
-        tokensMatch: normalizedToken === normalizedDbToken
+      console.error('Confirmation update error:', {
+        error,
+        idPrefix: id.slice(0, 8),
       });
       // Get base URL for proper redirect
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
